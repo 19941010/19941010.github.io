@@ -367,24 +367,15 @@
       
         
           
-            <h2 id="用户信息"><a href="#用户信息" class="headerlink" title="用户信息"></a>用户信息</h2><p>当安装完 Git 应该做的第一件事就是设置你的用户名称与邮件地址。<br>这样做很重要，因为每一个 Git 的提交都会使用这些信息，并且它会写入到你的每一次提交中，不可更改：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git config --global user.name <span class="string">"John Doe"</span></span><br><span class="line">$ git config --global user.email johndoe@example.com</span><br></pre></td></tr></table></figure></p>
-<h3 id="创建版本库"><a href="#创建版本库" class="headerlink" title="创建版本库"></a>创建版本库</h3><p>版本库又名仓库，英文名repository，可以简单理解成一个目录，这个目录里面的所有文件都可以被Git管理起来<br>首先，选择一个合适的地方，创建一个空目录。<br>第二步，通过 git init 命令把这个目录变成Git可以管理的仓库。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git init</span><br></pre></td></tr></table></figure></p>
-<h3 id="把文件添加到版本库"><a href="#把文件添加到版本库" class="headerlink" title="把文件添加到版本库"></a>把文件添加到版本库</h3><h4 id="第一步，用命令git-add告诉Git，把文件添加到仓库："><a href="#第一步，用命令git-add告诉Git，把文件添加到仓库：" class="headerlink" title="第一步，用命令git add告诉Git，把文件添加到仓库："></a>第一步，用命令git add告诉Git，把文件添加到仓库：</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git add example.txt</span><br></pre></td></tr></table></figure>
-<h4 id="第二步，用命令git-commit告诉Git，把文件提交到仓库："><a href="#第二步，用命令git-commit告诉Git，把文件提交到仓库：" class="headerlink" title="第二步，用命令git commit告诉Git，把文件提交到仓库："></a>第二步，用命令git commit告诉Git，把文件提交到仓库：</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ git commit -m <span class="string">"wrote a example file"</span></span><br><span class="line">[master (root-commit) cb926e7] wrote a example file</span><br><span class="line"> 1 file changed, 2 insertions(+)</span><br><span class="line"> create mode 100644 example.txt</span><br></pre></td></tr></table></figure>
-<p>-m后面输入的是本次提交的说明</p>
-<h3 id="git-status命令可以让我们时刻掌握仓库当前的状态"><a href="#git-status命令可以让我们时刻掌握仓库当前的状态" class="headerlink" title="git status命令可以让我们时刻掌握仓库当前的状态"></a>git status命令可以让我们时刻掌握仓库当前的状态</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git status</span><br></pre></td></tr></table></figure>
-<h3 id="git-diff能看具体修改了什么内容"><a href="#git-diff能看具体修改了什么内容" class="headerlink" title="git diff能看具体修改了什么内容"></a>git diff能看具体修改了什么内容</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git diff example.txt</span><br></pre></td></tr></table></figure>
-<h3 id="git-log能查看历史修改记录"><a href="#git-log能查看历史修改记录" class="headerlink" title="git log能查看历史修改记录"></a>git log能查看历史修改记录</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="built_in">log</span></span><br></pre></td></tr></table></figure>
-<h3 id="要把当前版本回退到上一个版本，就可以使用git-reset命令："><a href="#要把当前版本回退到上一个版本，就可以使用git-reset命令：" class="headerlink" title="要把当前版本回退到上一个版本，就可以使用git reset命令："></a>要把当前版本回退到上一个版本，就可以使用git reset命令：</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git reset --hard HEAD^</span><br></pre></td></tr></table></figure>
-<p>(在Git中，用HEAD表示当前版本,上一个版本就是HEAD^，上上一个版本就是HEAD^^，<br>当然往上100个版本写100个^比较容易数不过来，所以写成HEAD~100。)</p>
-<p>然我们用git log再看看现在版本库的状态,最新的那个版本已经没了，怎么办？<br>办法其实还是有的，只要上面的命令行窗口还没有被关掉，你就可以顺着往上找啊找啊，<br>找到那个当时版本的commit id（例3628164…），于是就可以指定回到未来的某个版本：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git reset --hard 3628164</span><br></pre></td></tr></table></figure></p>
-<p>现在，你回退到了某个版本，关掉了电脑，第二天早上就后悔了，想恢复到新版本怎么办？找不到新版本的commit id怎么办？<br>在Git中，总是有后悔药可以吃的。当你用$ git reset –hard HEAD^回退到上个版本时，再想恢复到最新的，就必须找到最新版本的commit id。<br>Git提供了一个命令git reflog用来记录你的每一次命令：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ git reflog</span><br><span class="line">ea34578 HEAD@&#123;0&#125;: reset: moving to HEAD^</span><br><span class="line">3628164 HEAD@&#123;1&#125;: commit: append GPL</span><br><span class="line">ea34578 HEAD@&#123;2&#125;: commit: add distributed</span><br><span class="line">cb926e7 HEAD@&#123;3&#125;: commit (initial): wrote a example file</span><br></pre></td></tr></table></figure></p>
-<h3 id="add：把要提交的所有修改放到暂存区，"><a href="#add：把要提交的所有修改放到暂存区，" class="headerlink" title="add：把要提交的所有修改放到暂存区，"></a>add：把要提交的所有修改放到暂存区，</h3><h3 id="commit：把暂存区的所有修改提交到分支"><a href="#commit：把暂存区的所有修改提交到分支" class="headerlink" title="commit：把暂存区的所有修改提交到分支"></a>commit：把暂存区的所有修改提交到分支</h3><h3 id="Git跟踪并管理的是修改，而非文件。"><a href="#Git跟踪并管理的是修改，而非文件。" class="headerlink" title="Git跟踪并管理的是修改，而非文件。"></a>Git跟踪并管理的是修改，而非文件。</h3><h3 id="撤销修改"><a href="#撤销修改" class="headerlink" title="撤销修改"></a>撤销修改</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout -- example.txt</span><br></pre></td></tr></table></figure>
-<p>命令git checkout – example.txt意思就是，把example.txt文件在工作区的修改全部撤销，这里有两种情况：<br>一种是example.txt自修改后还没有被放到暂存区，现在，撤销修改就回到和版本库一模一样的状态；<br>一种是example.txt已经添加到暂存区后，又作了修改，现在，撤销修改就回到添加到暂存区后的状态。<br>总之，就是让这个文件回到最近一次git commit或git add时的状态。</p>
-<p>如果修改只是添加到了暂存区，还没有提交 用命令git reset HEAD file可以把暂存区的修改撤销掉（unstage），重新放回工作区</p>
-<h3 id="删除文件"><a href="#删除文件" class="headerlink" title="删除文件"></a>删除文件</h3><p>一般情况下，通常直接在文件管理器中把没用的文件删了，或者用rm命令删了<br>这个时候，Git知道你删除了文件，因此，工作区和版本库就不一致了，git status命令会立刻告诉你哪些文件被删除了：<br>现在你有两个选择：<br>一是确实要从版本库中删除该文件，那就用命令git rm删掉，并且git commit：<br>另一种情况是删错了，因为版本库里还有呢，所以可以很轻松地把误删的文件恢复到最新版本（$ git checkout – test.txt）</p>
-
-          
+          用户信息当安装完 Git 应该做的第一件事就是设置你的用户名称与邮件地址。这样做很重要，因为每一个 Git 的提交都会使
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/03/20/git-命令-1/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -513,10 +504,17 @@
       
         
           
-            <h2 id="Blog-Start"><a href="#Blog-Start" class="headerlink" title="Blog Start"></a>Blog Start</h2><p>本站使用Hexo和Github搭建</p>
-<p>参照 <a href="http://visugar.com/2017/05/04/20170504SetUpHexoBlog/" target="_blank" rel="noopener">张小花的博客</a> 完成</p>
+          Blog Start本站使用Hexo和Github搭建
+参照 张小花的博客 完成
 
           
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/03/20/first-blog/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -645,17 +643,15 @@
       
         
           
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-          
+          Welcome to Hexo! This is your very first post. Check documen
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/03/19/hello-world/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
